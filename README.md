@@ -48,6 +48,7 @@ Post installation:
 1. [Replace cluster config spec](#replace-cluster-config-spec)
 1. [Update the cluster](#update-the-cluster)
 1. [Wrapping up](#wrapping-up)
+  10.1 [View cluster logs in kibana](#view-cluster-logs-in-kibana)
 
 ## Requirements:
 * aws cli + aws credentials / profile [link to repo](https://github.com/tikalk/dev.hub.tikal.io/blob/master/docs/aws-cli.md) or the official [AWS installation howto](https://docs.aws.amazon.com/cli/latest/userguide/installing.html)
@@ -268,6 +269,12 @@ KubeDNS is running at https://api.dev.hub.tikal.io/api/v1/namespaces/kube-system
 To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 ```
 
+### View cluster logs in kibana
+![Kibana log](./docs/static/kibana-log.png)
+
+
 As always hope you found this blog post useful, feel free to drop me a line ...
-Yours
+
+Yours,
+
 HP
