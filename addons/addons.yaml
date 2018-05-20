@@ -1,0 +1,12 @@
+kind: Addons
+metadata:
+  name: hub-addons
+spec:
+  addons:
+  - name: tiller.addons.k8s.io
+    manifest: tiller.addons.k8s.io/k8s-1.7.yaml
+    kubernetesVersion: '>=1.7.0'
+    id: k8s-1.7
+    selector:
+      k8s-addon: tiller.addons.k8s.io
+    version: 2.7.2 #helm version

@@ -1,0 +1,37 @@
+apiVersion: kops/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: 2018-05-20T14:58:20Z
+  labels:
+    kops.k8s.io/cluster: dev.hub.tikal.io
+  name: master-eu-west-1a
+spec:
+  image: kope.io/k8s-1.8-debian-jessie-amd64-hvm-ebs-2018-02-08
+  machineType: t2.medium
+  maxSize: 1
+  minSize: 1
+  nodeLabels:
+    kops.k8s.io/instancegroup: master-eu-west-1a
+  role: Master
+  subnets:
+  - eu-west-1a
+
+---
+
+apiVersion: kops/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: 2018-05-20T14:58:20Z
+  labels:
+    kops.k8s.io/cluster: dev.hub.tikal.io
+  name: nodes
+spec:
+  image: kope.io/k8s-1.8-debian-jessie-amd64-hvm-ebs-2018-02-08
+  machineType: t2.medium
+  maxSize: 3
+  minSize: 3
+  nodeLabels:
+    kops.k8s.io/instancegroup: nodes
+  role: Node
+  subnets:
+  - eu-west-1a
