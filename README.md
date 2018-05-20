@@ -1,5 +1,7 @@
 # Baking a production ready Kubernetes cluster with "kops & friends"
 
+> This repo was designed for us internally/yet public (it's open source and no credentials exposed ...) to be able to spin-up simple k8s clusters for experiments I also [Blogged about it here](http://www.tikalk.com/posts/2018/05/21/baking-a-production-ready-kubernetes-cluster-with-kops-friends/)
+
 ## Intro
 
 So without introduction to the tools used in this blog post (maybe another time ...) I thought I would share with you something i've prepared in one of my projects,
@@ -11,7 +13,7 @@ We already have a `manual` process of instantiating our cluster using `kops` wit
 
 You will see below a list of `completed` which was the cause to blog about it, and the `Still in the works` and the `Post installation` is still manual :( which we will be working on ...
 
-All these should be found undert [tikalk/dev.hub.tikal.io](https://github.com/tikalk/dev.hub.tikal.io) github repo, I assume you can follow along there for any additions if I don't blog about them. **So lets get to it !!!**
+All these should be found under [tikalk/dev.hub.tikal.io](https://github.com/tikalk/dev.hub.tikal.io) github repo, I assume you can follow along [there](https://github.com/tikalk/dev.hub.tikal.io) for any additions if I don't blog about them. **So lets get to it !!!**
 
 ## Our desired cluster state:
 
@@ -28,7 +30,7 @@ Still in the works:
 
 Post installation:
 * [ ] Add spinnaker helm chart
-* [ ] Deploy sample app using all the above
+* [ ] Customer Applications as addons ?! / Spnnaker pipelines
 
 ## Step by Step:
 1. [Intro](#intro)
@@ -36,23 +38,24 @@ Post installation:
 1. [Requirements](#requirements)
 1. [Setup the environment](#setup-the-environment)
 1. [Create a cluster with kops](#create-a-cluster-with-kops)
-1. [Review Cluster](#review-cluster)</br>
-  6.1 [Cluster spec](#cluster-spec)</br>
-  6.2 [Instance Group spec](#instancegroup-spec)
+1. [Review Cluster](#review-cluster)
+
+	6.1 [Cluster spec](#cluster-spec)
+
+	6.2 [Instance Group spec](#instancegroup-spec)
+
 1. [Add kops addons](#add-kops-addons)
 1. [Replace cluster config spec](#replace-cluster-config-spec)
 1. [Update the cluster](#update-the-cluster)
 1. [Wrapping up](#wrapping-up)
 
 ## Requirements:
-* aws cli + aws credentials / profile ["my" howto](./docs/aws-cli.md) or the official [AWS installation howto](https://docs.aws.amazon.com/cli/latest/userguide/installing.html)
-
+* aws cli + aws credentials / profile [link to repo](https://github.com/tikalk/dev.hub.tikal.io/blob/master/docs/aws-cli.md) or the official [AWS installation howto](https://docs.aws.amazon.com/cli/latest/userguide/installing.html)
 * route53 public hosted zone [using a sub domain](https://github.com/kubernetes/kops/blob/master/docs/creating_subdomain.md)
-
-  For this example I am using a subdomain of `tikal.io` -> `hub.tikal.io`
-* kubectl [link]()
-* kops [link]()
-* Optional: terraform [link]()
+  for this example I am using a subdomain of `tikal.io` -> `hub.tikal.io`
+* kubectl [link to repo](https://github.com/tikalk/dev.hub.tikal.io/blob/master/docs/requirements.md)
+* kops [link to repo](https://github.com/tikalk/dev.hub.tikal.io/blob/master/docs/requirements.md)
+* Optional: terraform
 
 ## Setup the environment
 
@@ -66,7 +69,7 @@ The `setenv.sh` file:
 #!/bin/bash
 # The AWS profile you want to activate - for "sahring is caring reasons"
 # lets keep this value similar to all cluster administrators
-export AWS_PROFILE=kops-aws-tikal
+export AWS_PROFILE=tikal-io
 export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id)
 export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key)
 # As commented above this is the s3 bucket which can store multipule cluster configurations.
@@ -226,7 +229,7 @@ spec:
   - manifest: cluster-autoscaler
   - manifest: logging-elasticsearch
 ```
-See -> https://github.com/kubernetes/kops/issues/3554
+See -> [kops/issues/3554](https://github.com/kubernetes/kops/issues/3554)
 
 This will result in a cluster with logging and autoscaling enabled ...
 I am planning on adding some of my own addons but didn't get around to it yet _(hope to do in a separate post)_.
@@ -264,3 +267,7 @@ KubeDNS is running at https://api.dev.hub.tikal.io/api/v1/namespaces/kube-system
 
 To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 ```
+
+As always hope you found this blog post useful, feel free to drop me a line ...
+Yours
+HP
