@@ -53,6 +53,6 @@ Getting the configuration for kubectl to work run the following:
 kops  export kubecfg --name=${KOPS_CLUSTER_NAME} --state=${KOPS_STATE_STORE}
 ```
 
-A successful execution should yield -> **kops has set your kubectl context to ci-k8s.mobimate.com**.
+A successful execution should yield -> **kops has set your kubectl context to dev.hub.tikal.io**.
 
 Now you should be ready to start working with Kubernetes

@@ -270,11 +270,10 @@ To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 ```
 
 ### View cluster logs in kibana
-![Kibana log](./docs/static/kibana-log.png)
+![Kibana log](https://github.com/tikalk/dev.hub.tikal.io/blob/master/docs/static/kibana-log.png?raw=true)
 
 
 As always hope you found this blog post useful, feel free to drop me a line ...
 
 Yours,
-
 HP
