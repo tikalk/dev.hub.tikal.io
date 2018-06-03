@@ -248,11 +248,11 @@ kops replace -f ${KOPS_CLUSTER_NAME}-ig.yaml`
 Using `kops update cluster` like so:
 
 ```
-kops cluster update # for preview
-kops cluster update --yes
+kops update cluster # for preview
+kops update cluster --yes
 ```
 
-If your like me and you added the addon's after the cluster is created you also need to `kops rolling-update cluster --yes` considering addons are basically Kubernetes deployments / configMaps / Pod's ... so the kubernetes API should be able to pull them from your `s3Bucket/addons` folder.
+If you're like me and you added the addons after the cluster is created you also need to run `kops rolling-update cluster --yes`, considering addons are basically Kubernetes deployments / configMaps / Pod's ... so the kubernetes API should be able to pull them from your `s3Bucket/addons` folder.
 
 ## Wrapping up
 
@@ -268,6 +268,10 @@ KubeDNS is running at https://api.dev.hub.tikal.io/api/v1/namespaces/kube-system
 
 To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 ```
+
+In order to log into the UI, use the secret from your local `.kube/config` file.
+
+
 
 ### View cluster logs in kibana
 ![Kibana log](https://github.com/tikalk/dev.hub.tikal.io/blob/master/docs/static/kibana-log.png?raw=true)
